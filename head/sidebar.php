@@ -1,3 +1,12 @@
+<?php
+require '../conexion.php';
+
+$sql = $conexion->prepare('SELECT * FROM menu');
+$sql->execute();
+$res=$sql->fetch();
+ ?>
+
+
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <ul class="nav">
     <li class="nav-item nav-profile">
@@ -7,7 +16,7 @@
             <img src="../../images/faces/face1.jpg" alt="profile image">
           </div>
           <div class="text-wrapper">
-            <p class="profile-name"><?php echo $_SESSION['userName']; ?></p>
+            <p class="profile-name"><?php  echo $_SESSION['userName']; ?></p>
             <div>
               <small class="designation text-muted">
                 <?php if ($_SESSION['rol'] == 1): ?>
@@ -26,7 +35,7 @@
       </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="index.php">
+      <a class="nav-link" href="../principal/index.php">
         <i class="menu-icon mdi mdi-television"></i>
         <span class="menu-title">Principal</span>
       </a>
@@ -49,52 +58,34 @@
       </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="pages/forms/basic_elements.html">
-        <i class="menu-icon mdi mdi-backup-restore"></i>
-        <span class="menu-title">Form elements</span>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="pages/charts/chartjs.html">
-        <i class="menu-icon mdi mdi-chart-line"></i>
-        <span class="menu-title">Charts</span>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="pages/tables/basic-table.html">
-        <i class="menu-icon mdi mdi-table"></i>
-        <span class="menu-title">Tables</span>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="pages/icons/font-awesome.html">
+      <a class="nav-link" href="../menu/menu.php">
         <i class="menu-icon mdi mdi-sticker"></i>
-        <span class="menu-title">Icons</span>
+        <span class="menu-title">Menú</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
         <i class="menu-icon mdi mdi-restart"></i>
-        <span class="menu-title">User Pages</span>
+        <span class="menu-title">Páginas</span>
         <i class="menu-arrow"></i>
       </a>
       <div class="collapse" id="auth">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item">
-            <a class="nav-link" href="../login/blank-page.php"> muestra en bco. </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pages/samples/login.html"> Login </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pages/samples/register.html"> Register </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pages/samples/error-404.html"> 404 </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pages/samples/error-500.html"> 500 </a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../pagina1/pagina1.php"><?php echo $res['primero'] ?> </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../pagina2/pagina2.php"><?php echo $res['segundo'] ?> </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../pagina3/pagina3.php"><?php echo $res['tercero'] ?> </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../pagina4/pagina4.php"><?php echo $res['cuarto'] ?> </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../pagina5/pagina5.php"><?php echo $res['quinto'] ?> </a>
+            </li>
         </ul>
       </div>
     </li>
