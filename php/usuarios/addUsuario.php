@@ -3,7 +3,7 @@
 echo $_SESSION['rol'];
   if (isset($_SESSION['rol'])) {
      if ($_SESSION['rol'] == 0 ) {
-       header('location:../../index.php?id=error');
+       header('location:../principal/index.php?id=error');
 
      }elseif (isset($_POST['agregar'])) {
        include '../conexion.php';
@@ -21,7 +21,7 @@ echo $_SESSION['rol'];
         			                     ':password'=>$password,
         			                     ':rol'=>$rol  ));
 
-        		header('location:../../index.php?id=ok');
+        		header('location:../principal/index.php?id=ok');
      }
   }
 

@@ -4,7 +4,7 @@
       <div class="nav-link">
         <div class="user-wrapper">
           <div class="profile-image">
-            <img src="images/faces/face1.jpg" alt="profile image">
+            <img src="../../images/faces/face1.jpg" alt="profile image">
           </div>
           <div class="text-wrapper">
             <p class="profile-name"><?php echo $_SESSION['userName']; ?></p>
@@ -28,22 +28,22 @@
     <li class="nav-item">
       <a class="nav-link" href="index.php">
         <i class="menu-icon mdi mdi-television"></i>
-        <span class="menu-title">Dashboard</span>
+        <span class="menu-title">Principal</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
         <i class="menu-icon mdi mdi-content-copy"></i>
-        <span class="menu-title">Basic UI Elements</span>
+        <span class="menu-title">Headers</span>
         <i class="menu-arrow"></i>
       </a>
       <div class="collapse" id="ui-basic">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item">
-            <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a>
+            <a class="nav-link" href="../headers/fondo.php">Fondo pantalla</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pages/ui-features/typography.html">Typography</a>
+            <a class="nav-link" href="../headers/titulos.php">Titulos fotos</a>
           </li>
         </ul>
       </div>
@@ -81,7 +81,7 @@
       <div class="collapse" id="auth">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item">
-            <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a>
+            <a class="nav-link" href="../login/blank-page.php"> muestra en bco. </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="pages/samples/login.html"> Login </a>
