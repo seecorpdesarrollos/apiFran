@@ -13,32 +13,50 @@ $res=$sql->fetch();
 
 $sql1 = $conexion->prepare('SELECT * FROM pagina2');
 $sql1->execute();
-$pagi2=$sql1->fetch();
+$pagi2=$sql1->fetchAll();
+
+$sql1 = $conexion->prepare('SELECT * FROM pagina2');
+$sql1->execute();
+$pagi22=$sql1->fetch();
+$error = "";
+
+if (isset($_POST['pagina2'])) {
+   if (!empty( $_POST['subpagina'])) {
+     $subpagina = $_POST['subpagina'];
+     $sqlEdit=$conexion->prepare('UPDATE pagina2 SET subpagina=:subpagina WHERE id=1');
+     $sqlEdit->execute(array(':subpagina'=>$subpagina));
+   }
+     $subtitulo = $_POST['subtitulo'];
+     if (strpos($subtitulo, " ")) {
+      header('location:../../php/pagina2/pagina2.php?id=error');
+     }
+     $subtitulo1 = $_POST['subtitulo1'];
+     $tituloFoto = $_POST['tituloFoto'];
+     $subtitulofoto = $_POST['subtitulofoto'];
+     $descfoto = $_POST['descfoto'];
+
+     $file_name = $_FILES['imagen']['name'];
+     $carpeta = $_SERVER['DOCUMENT_ROOT'] . "/webFran/img/productos/";
+     $foto = "img/productos/".$file_name;
+     move_uploaded_file($_FILES['imagen']['tmp_name'], $carpeta .$file_name );
+
+     $sql=$conexion->prepare("INSERT INTO  pagina2  (subtitulo, subtitulo1,foto ,tituloFoto, subtitulofoto,descfoto) VALUES (:subtitulo, :subtitulo1, :foto, :tituloFoto,  :subtitulofoto,  :descfoto)");
+     if ($sql->execute(array(
+       ':subtitulo'=>$subtitulo,
+       ':subtitulo1'=>$subtitulo1,
+       ':tituloFoto'=>$tituloFoto,
+       ':subtitulofoto'=>$subtitulofoto,
+       ':descfoto'=>$descfoto,
+       ':foto'=>$foto,
+     ))) {
+       header('location:../../php/pagina2/pagina2.php?id=ok');
+     }else{
+       header('location:../../php/pagina2/pagina2.php?id=error');
+     }
 
 
-if (isset($_POST['pagina1'])) {
-  $subtitulo = $_POST['subtitulo'];
-  $titulo1 = $_POST['titulo1'];
-  $titulo2 = $_POST['titulo2'];
-  $titulo3 = $_POST['titulo3'];
-  $desc1 = $_POST['desc1'];
-  $desc2 = $_POST['desc2'];
-  $desc3 = $_POST['desc3'];
 
-  $sql=$conexion->prepare("UPDATE pagina1 SET subtitulo = :subtitulo , titulo1=:titulo1, titulo2 = :titulo2, titulo3 = :titulo3, desc1= :desc1, desc2 = :desc2, desc3 = :desc3");
-  if ($sql->execute(array(
-     ':subtitulo'=>$subtitulo,
-     ':titulo1'=>$titulo1,
-     ':titulo2'=>$titulo2,
-     ':titulo3'=>$titulo3,
-     ':desc1'=>$desc1,
-     ':desc2'=>$desc2,
-     ':desc3'=>$desc3,
-  ))) {
-    header('location:../../php/pagina1/pagina2.php?id=ok');
-  }else{
-    header('location:../../php/pagina1/pagina2.php?id=error');
-  }
+
 }
 
 
