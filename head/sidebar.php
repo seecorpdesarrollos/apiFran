@@ -83,9 +83,9 @@ $res=$sql->fetch();
             <li class="nav-item">
               <a class="nav-link" href="../pagina4/pagina4.php"><?php echo $res['cuarto'] ?> </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="../pagina5/pagina5.php"><?php echo $res['quinto'] ?> </a>
-            </li>
+            </li> -->
         </ul>
       </div>
     </li>
